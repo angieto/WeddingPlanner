@@ -1,0 +1,49 @@
+@model WeddingPlanner.Models.Wedding
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>Wedding Planner</title>
+</head>
+<body>
+    <div class="container-fluid mb-5">
+        <!--  Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:palevioletred">
+            <a class="navbar-brand" href="/dashboard">Wedding Planner</a>
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <!-- Greeting -->
+                <li class="nav-item">
+                    <a class="nav-link">Hello @ViewBag.LogUser.FirstName</a>
+                </li>
+            </ul>
+            <div class="ml-auto">
+                <ul style="list-style-type: none;">
+                    <li class="nav-item float-right">
+                        <a class="nav-link text-white float-right" href="/logout">Log off</a>
+                    </li>
+                </ul>  
+            </div> 
+        </nav>
+        <div class="container mt-5 col-6">
+            <form asp-action="CreatePlan" asp-controller="Dashboard" method="post" class="form-group mt-5">
+                <span class="text-danger" asp-validation-for="Wedder1"></span>
+                <input type="text" asp-for="Wedder1" class="form-control my-3" placeholder="Wedder One">
+                <span class="text-danger" asp-validation-for="Wedder2"></span>
+                <input type="text" asp-for="Wedder2" class="form-control my-3" placeholder="Wedder Two">
+                <small class="text-secondary">Select a Wedding Date</small>
+                <span class="text-danger" asp-validation-for="Date"></span>
+                <input type="date" asp-for="Date" class="form-control my-3">
+                <span class="text-danger" asp-validation-for="Address"></span>
+                <input type="text" asp-for="Address" class="form-control my-3" placeholder="Location">
+                <input type="hidden" asp-for="UserId" value="@ViewBag.UserId">
+                <button type="submit" class="btn btn-dark mt-5">Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
